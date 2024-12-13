@@ -23,10 +23,9 @@ This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Po
 
 1.  **Clone the repository:**
     ```bash
-    git clone [repository-url]
-    cd [repository-directory]
+    git clone https://github.com/kuka42/bolt-generated-converter-project.git
+    cd bolt-generated-converter-project
     ```
-    *Note: Git is not available in this environment, so you will need to manually copy the files.*
 
 2.  **Install dependencies:**
     ```bash
@@ -38,7 +37,8 @@ This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Po
     npm run dev
     ```
 
-4.  Open your browser and navigate to the address provided in the console (usually `http://localhost:5173`).
+4.  Open your browser and navigate to the address provided in the console, usually:
+    `http://localhost:5173`).
 
 ## Usage
 
@@ -63,21 +63,6 @@ The application uses the CoinGecko API to fetch real-time exchange rates. The AP
 
 Where `{selectedCrypto}` is replaced with the ID of the selected cryptocurrency (e.g., `bitcoin`, `ethereum`, `polkadot`, `dogecoin`).
 
-## Contributing
-
-If you would like to contribute to this project, please feel free to submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License
-=======
-## Cryptocurrency Converter
-
-This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Polkadot, and Dogecoin) to PLN and vice versa. The application utilizes the CoinGecko API to fetch real-time cryptocurrency exchange rates.
-
-Features
-
-    Supports BTC, ETH, Polkadot, and Dogecoin.
-    Converts both ways: Cryptocurrency ↔ PLN.
-    Fetches live data directly from the CoinGecko API.
->>>>>>> f3785beb4c7e077d2b16a8cfca7cf1a40f7650c9
