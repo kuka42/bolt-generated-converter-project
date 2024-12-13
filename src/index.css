@@ -39,6 +39,17 @@ body {
       box-sizing: border-box;
     }
 
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #555;
+      border-radius: 4px;
+      background-color: #444;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+
     .result {
       margin-top: 20px;
       font-size: 14px;

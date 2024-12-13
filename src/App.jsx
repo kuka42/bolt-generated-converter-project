@@ -2,21 +2,29 @@ import React, { useState, useEffect } from 'react';
 
     function App() {
       const [plnAmount, setPlnAmount] = useState('');
-      const [btcAmount, setBtcAmount] = useState('');
+      const [cryptoAmount, setCryptoAmount] = useState('');
+      const [selectedCrypto, setSelectedCrypto] = useState('bitcoin');
       const [rate, setRate] = useState(null);
       const [error, setError] = useState(null);
+
+      const cryptoOptions = [
+        { value: 'bitcoin', label: 'BTC' },
+        { value: 'ethereum', label: 'ETH' },
+        { value: 'polkadot', label: 'POLKADOT' },
+        { value: 'dogecoin', label: 'DOGE' },
+      ];
 
       useEffect(() => {
         const fetchRate = async () => {
           try {
             const response = await fetch(
-              'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=pln',
+              `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=pln`,
             );
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            setRate(data.bitcoin.pln);
+            setRate(data[selectedCrypto].pln);
             setError(null);
           } catch (e) {
             setError('Failed to fetch exchange rate.');
@@ -25,24 +33,24 @@ import React, { useState, useEffect } from 'react';
         };
 
         fetchRate();
-      }, []);
+      }, [selectedCrypto]);
 
       const handlePlnChange = (event) => {
         const value = event.target.value;
         if (/^\d*\.?\d*$/.test(value)) {
           setPlnAmount(value);
           if (rate) {
-            setBtcAmount((value / rate).toFixed(8));
+            setCryptoAmount((value / rate).toFixed(8));
           } else {
-            setBtcAmount('');
+            setCryptoAmount('');
           }
         }
       };
 
-      const handleBtcChange = (event) => {
+      const handleCryptoChange = (event) => {
         const value = event.target.value;
-        if (/^\d*\.?\d*$/.test(value)) {
-          setBtcAmount(value);
+         if (/^\d*\.?\d*$/.test(value)) {
+          setCryptoAmount(value);
           if (rate) {
             setPlnAmount((value * rate).toFixed(2));
           } else {
@@ -51,10 +59,26 @@ import React, { useState, useEffect } from 'react';
         }
       };
 
+      const handleCryptoSelect = (event) => {
+        setSelectedCrypto(event.target.value);
+        setPlnAmount('');
+        setCryptoAmount('');
+      };
+
       return (
         <div className="converter-container">
           <h2>Currency Converter</h2>
           {error && <p style={{ color: 'red' }}>{error}</p>}
+          <div className="input-group">
+            <label>Select Cryptocurrency</label>
+            <select value={selectedCrypto} onChange={handleCryptoSelect}>
+              {cryptoOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="input-group">
             <label>PLN</label>
             <input
@@ -65,18 +89,18 @@ import React, { useState, useEffect } from 'react';
             />
           </div>
           <div className="input-group">
-            <label>BTC</label>
+            <label>{cryptoOptions.find(option => option.value === selectedCrypto).label}</label>
             <input
               type="text"
-              value={btcAmount}
-              onChange={handleBtcChange}
-              placeholder="Enter BTC amount"
+              value={cryptoAmount}
+              onChange={handleCryptoChange}
+              placeholder={`Enter ${cryptoOptions.find(option => option.value === selectedCrypto).label} amount`}
             />
           </div>
           {rate && (
             <div className="result">
               <p>
-                1 BTC = {rate} PLN
+                1 {cryptoOptions.find(option => option.value === selectedCrypto).label} = {rate} PLN
               </p>
             </div>
           )}
