@@ -4,6 +4,8 @@
 
 This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Polkadot, and Dogecoin) to PLN and vice versa. The application utilizes the CoinGecko API to fetch real-time cryptocurrency exchange rates.
 
+![preview](https://repository-images.githubusercontent.com/903052632/34e00c51-0de3-4439-a57a-05ec893e7db6)
+
 ## Features
 
 - Supports BTC, ETH, Polkadot, and Dogecoin.
