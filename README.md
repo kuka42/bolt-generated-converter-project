@@ -23,8 +23,8 @@ This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Po
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/kuka42/bolt-generated-converter-project.git
-    cd bolt-generated-converter-project
+    git clone https://github.com/kuka42/cryptocurrency-pln-converter.git
+    cd cryptocurrency-pln-converter
     ```
 
 2.  **Install dependencies:**
