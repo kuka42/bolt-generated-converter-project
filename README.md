@@ -1,6 +1,6 @@
-# bolt-generated-converter-project
+# cryptocurrency-pln-converter
 
-# Cryptocurrency Converter
+# Cryptocurrency PLN Converter
 
 This project allows you to easily convert popular cryptocurrencies (BTC, ETH, Polkadot, and Dogecoin) to PLN and vice versa. The application utilizes the CoinGecko API to fetch real-time cryptocurrency exchange rates.
 
